@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.container {
+    width: calc(100% - 2rem);
+    max-width: 1270px;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        img {
+            width: clamp(160px, 3vw, 237px);
+        }
+
+        nav {
+            display: flex;
+            gap: 33px;
+
+            @media screen and (max-width:767px) {
+                display: none;
+            }
+
+            a {
+                font-family: Barlow;
+                font-weight: 700;
+                font-style: Bold;
+                font-size: 12px;
+                line-height: 130%;
+                letter-spacing: 0.92px;
+                text-transform: uppercase;
+                text-decoration: none;
+                color: #83888F;
+            }
+
+        }
+
+        #menu {
+            display: none;
+
+            @media screen and (max-width:767px) {
+                display: flex;
+            }
+        }
+    }
+}
+
+
+#heroSection {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .container {
+        height: 584px;
+        background-color: yellow;
+        background-image: url('./Bitmap.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        padding: 0 80px;
+
+        @media screen and (max-width:767px) {
+            padding: 0 32px;
+            background-image: url('./Bitmap-dark.jpg');
+        }
+
+        .box {
+            width: 493px;
+            max-width: 100%;
+
+            @media screen and (max-width:767px) {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+
+            h1 {
+                font-family: Fraunces;
+                font-weight: 900;
+                font-size: clamp(40px, 4vw, 72px);
+                line-height: 100%;
+                letter-spacing: 0px;
+                color: #FEFCF7;
+                margin-bottom: 32px;
+
+                @media screen and (max-width:767px) {
+                    text-align: center;
+                }
+
+            }
+
+            p {
+                font-family: Barlow;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 160%;
+                letter-spacing: 0px;
+                color: #FEFCF7;
+                margin-bottom: 48px;
+
+                @media screen and (max-width:767px) {
+                    text-align: center;
+                }
+
+            }
+
+            button {
+                border-radius: 6px;
+                background-color: #0E8784;
+                padding: 16px 32px;
+                border: 0;
+                font-family: Fraunces;
+                font-weight: 900;
+                font-style: Black;
+                font-size: 18px;
+                line-height: 140%;
+                letter-spacing: 0px;
+                text-align: center;
+                color: #FEFCF7;
+
+            }
+
+        }
+    }
+}
+
+#section2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 140px 0;
+
+    @media screen and (max-width:992px) {
+        padding: 80px 0;
+    }
+
+
+    .container {
+        max-width: 1110px;
+        position: relative;
+
+        .sectionHeading {
+            width: 100%;
+            z-index: -1;
+        }
+
+        .box {
+            position: absolute;
+            width: 100%;
+            top: 128px;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            @media screen and (max-width:767px) {
+                top: 48px;
+            }
+
+            .cards {
+                width: calc((100% - (32px*3)) / 4);
+                display: flex;
+                flex-direction: column;
+
+                @media screen and (min-width:768px) and (max-width:992px) {
+                    flex-direction: row;
+                    align-items: center;
+                }
+
+                @media screen and (max-width:992px) {
+                    width: 100%;
+
+                }
+
+                @media screen and (max-width:767px) {
+                    flex-direction: column;
+
+                }
+
+                img {
+                    width: 100%;
+                    margin-bottom: 48px;
+
+                    @media screen and (min-width:767px) and (max-width:992px) {
+                        width: 253px;
+                        margin-bottom: 0;
+                    }
+
+                    @media screen and (max-width:767px) {
+                        margin-bottom: 24px;
+                    }
+
+                }
+
+                h2 {
+                    color: #333D4B;
+                    font-family: Fraunces;
+                    font-weight: 900;
+                    font-style: Black;
+                    font-size: 24px;
+                    line-height: 150%;
+                    letter-spacing: 0px;
+                    text-align: center;
+                    margin-bottom: 24px;
+
+                    @media screen and (min-width:767px) and (max-width:992px) {
+                        text-align: left;
+                    }
+
+                    @media screen and (max-width:767px) {
+                        margin-bottom: 16px;
+                    }
+
+                }
+
+                p {
+                    font-family: Barlow;
+                    font-weight: 400;
+                    font-style: Regular;
+                    font-size: 16px;
+                    line-height: 160%;
+                    letter-spacing: 0px;
+                    text-align: center;
+                    color: #333D4B;
+
+                    @media screen and (min-width:767px) and (max-width:992px) {
+                        text-align: left;
+                        width: 300px;
+                    }
+
+
+                }
+            }
+        }
+    }
+}
