@@ -4,63 +4,106 @@
 
 // Steady States
 let balance = 0;
+let hasLogged = false;
 const passwordDB = '1234';
 const transactionHistory = [];
 
+const makeDeposit = () => {
+  let amount = +prompt('Please enter Amount you want to deposit');
+  let transaction = {
+    beforeBalance: balance,
+    amount: amount,
+    type: 'deposite',
+    afterBalance: balance + amount,
+  };
+  transactionHistory.push(transaction);
+  // الرصيد اتغير
+  balance += amount;
+  console.log(`Your Balance is : ${balance}`);
+};
+
+const makeWithdraw = (amount) => {
+  let transaction = {
+    beforeBalance: balance,
+    amount: amount,
+    type: 'withdraw',
+    afterBalance: balance - amount,
+  };
+  transactionHistory.push(transaction);
+  balance -= amount;
+  console.log(`Your Balance is : ${balance}`);
+};
+
 const showBalance = () => {
-  let pass = prompt('Please enter your password');
   console.clear();
-  if (pass == passwordDB) {
-    console.log(`Your Balance is : ${balance}`);
+
+  if (hasLogged == false) {
+    let pass = prompt('Please enter your password');
+    if (pass == passwordDB) {
+      console.log(`Your Balance is : ${balance}`);
+      hasLogged = true;
+    } else {
+      console.log('Invalid Password');
+    }
   } else {
-    console.log('Invalid Password');
+    console.log(`Your Balance is : ${balance}`);
   }
 };
 
 const depositAmount = () => {
-  let pass = prompt('Please enter your password');
   console.clear();
-  if (pass == passwordDB) {
-    let amount = +prompt('Please enter Amount you want to deposit');
-    let transaction = {
-      beforeBalance: balance,
-      amount: amount,
-      type: 'deposite',
-      afterBalance: balance + amount,
-    };
-    transactionHistory.push(transaction);
-    // الرصيد اتغير
-    balance += amount;
-    console.log(`Your Balance is : ${balance}`);
+
+  if (hasLogged == false) {
+    let pass = prompt('Please enter your password');
+    if (pass == passwordDB) {
+      hasLogged = true;
+      makeDeposit();
+    } else {
+      console.log('Invalid Password');
+    }
   } else {
-    console.log('Invalid Password');
+    makeDeposit();
   }
 };
 
 const withdrawAmount = () => {
-  let pass = prompt('Please enter your password');
   console.clear();
-  if (pass == passwordDB) {
+
+  if (hasLogged == false) {
+    let pass = prompt('Please enter your password');
+    if (pass == passwordDB) {
+      hasLogged = true;
+      let amount = +prompt('Please enter Amount you want to deposit');
+      if (amount <= balance) {
+        makeWithdraw(amount);
+      } else {
+        console.log(`انت شحات يا اسطي مفيش الفلوس اللي عاوز تسحبها ديه رصيدك هو  is : ${balance}`);
+      }
+    } else {
+      console.log('Invalid Password');
+    }
+  } else {
     let amount = +prompt('Please enter Amount you want to deposit');
     if (amount <= balance) {
-      let transaction = {
-        beforeBalance: balance,
-        amount: amount,
-        type: 'withdraw',
-        afterBalance: balance - amount,
-      };
-      transactionHistory.push(transaction);
-      balance -= amount;
-      console.log(`Your Balance is : ${balance}`);
+      makeWithdraw(amount);
     } else {
       console.log(`انت شحات يا اسطي مفيش الفلوس اللي عاوز تسحبها ديه رصيدك هو  is : ${balance}`);
     }
-  } else {
-    console.log('Invalid Password');
   }
 };
 
 const showHistory = () => {
   console.clear();
-  console.table(transactionHistory);
+
+  if (hasLogged == false) {
+    let pass = prompt('Please enter your password');
+    if (pass == passwordDB) {
+      hasLogged = true;
+      console.table(transactionHistory);
+    } else {
+      console.log('Invalid Password');
+    }
+  } else {
+    console.table(transactionHistory);
+  }
 };
