@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+@import "tailwindcss";
+@plugin "daisyui";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@theme {
+  --font-jsans: "Plus Jakarta Sans", sans-serif;
+  --color-violet: #4f39f6;
+}
+
+.mybtn {
+  @apply bg-violet px-6 py-3 text-white font-semibold rounded-[10px];
+}
+
+.lightBtn {
+  @apply bg-transparent border border-[#C6D2FF] px-6 py-3 text-violet font-semibold rounded-[10px];
+}
